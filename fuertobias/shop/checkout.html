@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Warenkorb – FitGear</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #121212;
+      color: #fff;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #4caf50;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #333;
+    }
+    th {
+      background-color: #1e1e1e;
+      color: #4caf50;
+    }
+    tr:nth-child(even) {
+      background-color: #1a1a1a;
+    }
+    .qty-input {
+      width: 50px;
+      padding: 6px;
+      font-size: 1rem;
+      text-align: center;
+      background: #000;
+      color: #fff;
+      border: 1px solid #4caf50;
+      border-radius: 4px;
+    }
+    .btn-delete {
+      background-color: #b00020;
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-delete:hover {
+      background-color: #e53935;
+    }
+    .total-row {
+      font-weight: bold;
+      background-color: #1e1e1e;
+    }
+    .form-section {
+      margin-top: 40px;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .form-section label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .form-section input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #4caf50;
+      border-radius: 4px;
+      background: #000;
+      color: white;
+    }
+    .form-section button {
+      background: #4caf50;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .paypal-button {
+  width: auto;
+  padding: 10px 20px;
+  display: inline-block;
+      display: inline-block;
+      background-color: #ffc439;
+      color: black;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+    }
+    a.back {
+      color: #4caf50;
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body style="background-color:#121212; color:#e0e0e0;" style="background-color:#121212; color:#e0e0e0;">
+  <a href="index.php" class="back">← Zurück zum Shop</a>
+  <h1>🛒 Dein Warenkorb</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Produkt</th>
+        <th>Preis</th>
+        <th>Menge</th>
+        <th>Gesamt</th>
+        <th>Aktion</th>
+      </tr>
+    </thead>
+    <tbody id="cart-body"></tbody>
+    <tfoot>
+      <tr class="total-row">
+        <td colspan="3">Gesamtsumme:</td>
+        <td id="cart-total">0.00 €</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="form-section">
+    <h2>🧾 Bestellinformationen</h2>
+    <form onsubmit="alert('Bestellung wurde übermittelt!'); return false;">
+      
+    <div style="display: flex; gap: 20px;">
+      <label style="flex:1;">Vorname:<br><input type="text" required></label>
+      <label style="flex:1;">Nachname:<br><input type="text" required></label>
+    </div>
+    
+      <label>Adresse:<br><input type="text" required></label>
+      <label>Email:<br><input type="email" required></label>
+      <button type="submit">Bestellung absenden</button>
+    </form>
+    <a href="https://www.paypal.com/paypalme/DEINUSERNAME" class="paypal-button" style="width:auto;padding:10px 20px; display:inline-block;" target="_blank">Jetzt mit PayPal bezahlen</a>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("fitgear_cart") || "[]");
+
+    function renderCart() {
+      const tbody = document.getElementById("cart-body");
+      tbody.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((p, i) => {
+        const subtotal = p.price * p.qty;
+        total += subtotal;
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${p.title}</td>
+          <td>${p.price.toFixed(2)} €</td>
+          <td><input class="qty-input" type="number" value="${p.qty}" min="1" onchange="updateQty(${i}, this.value)"></td>
+          <td>${subtotal.toFixed(2)} €</td>
+          <td><button class="btn-delete" onclick="removeItem(${i})">Löschen</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById("cart-total").innerText = total.toFixed(2) + " €";
+    }
+
+    function updateQty(index, value) {
+      const qty = parseInt(value);
+      if (qty > 0) {
+        cart[index].qty = qty;
+        localStorage.setItem("fitgear_cart", JSON.stringify(cart));
+        renderCart();
+      }
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("fitgear_cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    window.onload = renderCart;
+  </script>
+</body>
+</html>

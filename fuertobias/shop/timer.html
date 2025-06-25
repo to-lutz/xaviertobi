@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head><meta charset="UTF-8"><title>FitGear Countdown</title></head>
+<body style="background-color:#121212; color:#e0e0e0;" style="background-color:#121212; color:#e0e0e0;">
+  <h1>⏳ Angebot endet in: <span id="countdown">00:00:00</span></h1>
+  <script>
+    const end = new Date().getTime() + 86400000;
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = end - now;
+      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("countdown").textContent = h + ":" + m + ":" + s;
+      if (distance < 0) clearInterval(interval);
+    }, 1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>USB‑C Kabel – FitGear</title>
+  
+<style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    .images {
+      flex: 1 1 40%;
+    }
+    .images img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+    }
+    .details {
+      flex: 1 1 55%;
+    }
+    .details h1 {
+      margin-top: 0;
+      color: #4caf50;
+    }
+    .details p {
+      line-height: 1.5;
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    .btn {
+      background-color: #4caf50;
+      color: black;
+      border: none;
+      padding: 12px 24px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    a.back {
+      color: #4caf50;
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body style="background-color:#121212; color:#e0e0e0;" style="background-color:#121212; color:#e0e0e0;">
+<header style="background-color: #000; color: white; padding: 32px 0; border-bottom: 1px solid #333;">
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 24px;">
+    <div style="font-size: 2rem; font-weight: bold; display: flex; align-items: center; gap: 10px;">
+      🛒 FitGear Mobile Shop
+    </div>
+    <nav style="display: flex; justify-content: center; gap: 100px; font-size: 1.25rem;">
+      <a href="index.html" style="color: #ccc; text-decoration: none;">Shop</a>
+      <a href="checkout.html" style="color: #ccc; text-decoration: none;">Kasse</a>
+      <a href="faq.html" style="color: #ccc; text-decoration: none;">FAQ</a>
+      <a href="landing.html" style="color: #ccc; text-decoration: none;">Angebot</a>
+    </nav>
+  </div>
+  <div style="position: absolute; top: 32px; right: 32px; display: flex; align-items: center; gap: 6px;">
+    🛒
+    <span id="cart-count" style="background-color: #4caf50; color: white; border-radius: 50%; padding: 6px 10px; font-size: 0.9rem;">0</span>
+  </div>
+</header>
+
+
+
+
+
+
+
+  <a href="index.html" class="back">← Zurück zum Shop</a>
+  <div class="container">
+    <div class="images">
+      <img src="img/usb-c-kabel.jpg" alt="USB‑C Kabel">
+    </div>
+    <div class="details">
+      <h1>USB‑C Kabel</h1>
+      <p>Ein hochwertiges, robustes USB‑C Kabel für schnelles Laden und zuverlässige Datenübertragung. Geeignet für Smartphones, Tablets und viele weitere Geräte.</p>
+      <div class="price">5.99 €</div>
+      <button class="btn" onclick="addToCart('USB‑C Kabel', 5.99)">Zum Warenkorb hinzufügen</button>
+    </div>
+  </div>
+
+  <script>
+    function addToCart(title, price) {
+      const cart = JSON.parse(localStorage.getItem("fitgear_cart") || "[]");
+      const existing = cart.find(p => p.title === title);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ title, price, qty: 1 });
+      }
+      localStorage.setItem("fitgear_cart", JSON.stringify(cart));
+      alert(title + " wurde dem Warenkorb hinzugefügt.");
+    }
+  </script>
+
+<script>
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("fitgear_cart") || "[]");
+    const total = cart.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById("cart-count").textContent = total;
+  }
+  updateCartCount();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - FitGear Mobile Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #1c1c1c;
+            padding: 1rem 0;
+            border-bottom: 1px solid #333;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 2rem;
+            font-size: 1.1rem;
+        }
+        .navbar a:hover {
+            color: #4CAF50;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .faq-item {
+            border-bottom: 1px solid #333;
+            padding: 1rem 0;
+            cursor: pointer;
+        }
+        .faq-question {
+            font-size: 1.2rem;
+            color: #4CAF50;
+        }
+        .faq-answer {
+            display: none;
+            margin-top: 0.5rem;
+            color: white;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+    </style>
+</head>
+<body style="background-color:#121212; color:#e0e0e0;" style="background-color:#121212; color:#e0e0e0;">
+
+<div class="navbar">
+    <a href="index.php">Shop</a>
+    <a href="checkout.html">Kasse</a>
+    <a href="faq.html">FAQ</a>
+    <a href="angebot.html">Angebot</a>
+</div>
+
+<div class="container">
+    <h1>Häufig gestellte Fragen</h1>
+
+    <div class="faq-item">
+        <div class="faq-question">Wie lange dauert der Versand?</div>
+        <div class="faq-answer">Der Versand dauert in der Regel 2-3 Werktage.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Welche Zahlungsmethoden werden akzeptiert?</div>
+        <div class="faq-answer">Wir akzeptieren PayPal, Kreditkarte und Sofortüberweisung.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Kann ich meine Bestellung zurückgeben?</div>
+        <div class="faq-answer">Ja, Rückgaben sind innerhalb von 14 Tagen nach Erhalt möglich.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Wie kann ich den Kundenservice kontaktieren?</div>
+        <div class="faq-answer">Sie erreichen unseren Kundenservice per E-Mail an support@fitgear.de.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Gibt es Rabatte für Neukunden?</div>
+        <div class="faq-answer">Ja, Neukunden erhalten 10% Rabatt auf ihre erste Bestellung.</div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+</script>
+
+</body>
+</html>

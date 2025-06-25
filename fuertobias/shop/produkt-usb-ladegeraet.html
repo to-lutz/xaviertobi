@@ -1,0 +1,43 @@
+
+<header style="background-color: #1a1a1a; padding: 20px 0; text-align: center;">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/shopping-cart.png" alt="Cart Icon" style="height: 24px;">
+        <h1 style="color: white; font-size: 32px; margin: 0;">FitGear Mobile Shop</h1>
+    </div>
+    <div style="position: absolute; top: 20px; right: 20px; display: flex; align-items: center; gap: 5px;">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/shopping-cart.png" alt="Cart Icon" style="height: 20px;">
+        <span style="background-color: #4caf50; color: white; border-radius: 12px; padding: 2px 8px; font-size: 14px;">26</span>
+    </div>
+</header>
+<nav style="background-color: #222; padding: 15px 0; display: flex; justify-content: space-around; font-size: 20px;">
+    <a href="#" style="color: #ccc; text-decoration: none;">Shop</a>
+    <a href="#" style="color: #ccc; text-decoration: none;">Kasse</a>
+    <a href="#" style="color: #ccc; text-decoration: none;">FAQ</a>
+    <a href="#" style="color: #ccc; text-decoration: none;">Angebot</a>
+</nav>
+<main style="padding: 2rem;">
+    <a href="index.html" style="color: #4caf50; text-decoration: none; font-size: 1.2rem;">← Zurück zum Shop</a>
+    <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 3rem;">
+      <div style="flex: 1; min-width: 250px; max-width: 400px;">
+        <img src="https://via.placeholder.com/100?text=USB-Ladegerä" alt="USB-Ladegerät" style="width: 100%; border-radius: 12px;" />
+      </div>
+      <div style="flex: 2; min-width: 250px; max-width: 600px;">
+        <h1 style="font-size: 2.5rem; color: #4caf50;">USB-Ladegerät</h1>
+        <p style="margin-top: 1rem; font-size: 1.2rem; line-height: 1.6; color:#4caf50;">Keine Beschreibung vorhanden.</p>
+        <div style="margin: 1.5rem 0; font-size: 2rem; color: #ffffff; font-weight: bold;">142.38 €</div>
+        <button class="btn">Zum Warenkorb hinzufügen</button>
+      </div>
+    </div>
+  </main>
+
+<script>
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("fitgear_cart") || "[]");
+    const total = cart.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById("cart-count").textContent = total;
+  }
+  updateCartCount();
+</script>
+
+</body>
+</html>
