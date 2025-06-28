@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -870,6 +871,169 @@ function toggleCartPreview() {
 }
 window.onload = updateCartCount;
 </script>
+
+<!-- 🍪 COOKIE MODAL -->
+<div id="cookie-modal" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:9999;">
+  <div style="background:#1e1e1e;color:white;padding:30px;border-radius:10px;max-width:600px;width:90%;max-height:80vh;overflow:hidden;box-shadow:0 0 20px #000;display:flex;flex-direction:column;">
+    
+    <h2 style="text-align:center;color:#4CAF50;">🍪 Cookie-Einstellungen</h2>
+
+    <div style="overflow-y:auto;padding:10px;margin:10px 0;border:1px solid #333;border-radius:6px;background:#2a2a2a;flex-grow:1;">
+      <p>
+        Wir verwenden Cookies zur Verbesserung deines Einkaufserlebnisses. Dazu gehören essentielle Funktionen wie der Warenkorb, Spracheinstellungen, Sicherheits-Token, Session-IDs und mehr.
+      </p>
+      <p>
+        Du kannst deine Entscheidung jederzeit ändern. Weitere Infos findest du in unserer Datenschutzerklärung.
+      </p>
+      <p> 
+      <h3>1. Allgemeines</h3>
+Diese Cookie-Richtlinie informiert Sie über die Verwendung von Cookies auf 
+unserer Website gemäß Art. 13 DSGVO. Wir, Fitgear, betreiben diesen Onlineshop 
+(nachfolgend „Website“) und setzen Cookies ein, um Ihnen eine benutzerfreundliche 
+und sichere Nutzung unseres Angebots zu ermöglichen.
+
+<h3>2. Was sind Cookies?</h3>
+Cookies sind kleine Textdateien, die durch Ihren Browser auf Ihrem Endgerät gespeichert werden, 
+wenn Sie unsere Website besuchen. Diese Dateien enthalten Informationen, 
+die eine Wiedererkennung des Browsers ermöglichen und bestimmte Funktionen unserer Website 
+sicherstellen.
+
+<h3>3. Arten von Cookies</h3>
+Wir verwenden folgende Arten von Cookies:
+
+a) Technisch notwendige Cookies
+Rechtsgrundlage: Art. 6 Abs. 1 lit. b und f DSGVO
+Diese Cookies sind für den Betrieb der Website erforderlich. Ohne diese Cookies funktioniert z. B. der Warenkorb oder der Login-Bereich nicht. Dazu zählen:
+
+Session-ID (zur Wiedererkennung während Ihres Besuchs)
+
+Authentifizierung und Login-Zustand
+
+Speicherung Ihrer Cookie-Einstellungen
+
+Warenkorb-Funktion
+
+Sicherheitsfunktionen (z. B. CSRF-Schutz)
+
+b) Funktionale Cookies
+Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)
+Diese Cookies ermöglichen zusätzliche Funktionen, z. B.:
+
+Speicherung von Sprache, Region oder Währung
+
+Anzeige zuletzt angesehener Produkte
+
+Personalisierte Benutzeroberfläche (z. B. Ansicht als Liste/Gitter)
+
+c) Analyse- und Statistik-Cookies
+Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)
+Diese Cookies helfen uns, das Verhalten unserer Nutzer anonymisiert zu analysieren und unsere Website zu verbessern:
+
+Besuchte Seiten und Kategorien
+
+Verweildauer und Scrollverhalten
+
+A/B-Tests zur Optimierung der Benutzererfahrung
+
+d) Marketing- und Tracking-Cookies
+Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)
+Diese Cookies ermöglichen es, Ihnen personalisierte Werbung anzuzeigen und den Erfolg unserer Werbemaßnahmen zu messen:
+
+Retargeting (z. B. über Google Ads, Meta/Facebook Pixel)
+
+Affiliate-Tracking (Partnerprogramm-Zuordnung)
+
+Benutzer-ID zur Wiedererkennung auf Drittseiten
+
+<h3>4. Einwilligung und Widerruf</h3>
+Nicht-notwendige Cookies werden nur gesetzt, wenn Sie darin ausdrücklich eingewilligt haben (Art. 7 DSGVO). Ihre Einwilligung erfolgt über unser Cookie-Banner und kann jederzeit widerrufen oder angepasst werden.
+
+Cookie-Einstellungen ändern: [Link zu Cookie-Einstellungen einfügen]
+
+<h3>5. Speicherdauer</h3>
+Die Speicherdauer der Cookies variiert je nach Zweck:
+
+Session-Cookies: werden nach dem Schließen des Browsers gelöscht.
+
+Persistente Cookies: bleiben je nach Zweck mehrere Tage bis Monate gespeichert.
+
+Eine detaillierte Aufstellung finden Sie in unserer [Cookie-Tabelle / Übersicht].
+
+<h3>6. Drittanbieter-Cookies</h3>
+Teilweise setzen wir Cookies von Drittanbietern ein (z. B. Google Analytics, Meta Pixel). 
+Diese Anbieter können Daten in Drittländer wie die USA übertragen.
+ Wir achten dabei auf den Abschluss entsprechender Verträge 
+ (z. B. Standardvertragsklauseln gemäß Art. 46 DSGVO).
+
+<h3>7. Ihre Rechte</h3>
+Als Nutzer haben Sie gemäß DSGVO folgende Rechte:
+
+Auskunft (Art. 15 DSGVO)
+
+Berichtigung (Art. 16 DSGVO)
+
+Löschung (Art. 17 DSGVO)
+
+Einschränkung der Verarbeitung (Art. 18 DSGVO)
+
+Datenübertragbarkeit (Art. 20 DSGVO)
+
+Widerspruch gegen Verarbeitung (Art. 21 DSGVO)
+      </p>
+    </div>
+
+    <button onclick="acceptCookies()" style="margin:15px auto 5px auto;padding:12px 30px;font-weight:bold;font-size:16px;background:#4CAF50;color:white;border:none;border-radius:6px;cursor:pointer;">
+      ✅ Akzeptieren
+    </button>
+    <a href="#" onclick="declineCookies(); return false;" style="text-align:center;color:#aaa;font-size:12px;margin-top:10px;text-decoration:underline;">
+      Ablehnen
+    </a>
+  </div>
+</div>
+
+<script>
+function setConsent(status) {
+  const expireAt = Date.now() + 7 * 24 * 60 * 60 * 1000; // 7 Tage
+  const data = { status: status, expires: expireAt };
+  localStorage.setItem("cookieConsent", JSON.stringify(data));
+}
+
+function getConsent() {
+  const stored = localStorage.getItem("cookieConsent");
+  if (!stored) return null;
+  try {
+    const obj = JSON.parse(stored);
+    if (Date.now() > obj.expires) {
+      localStorage.removeItem("cookieConsent");
+      return null;
+    }
+    return obj.status;
+  } catch {
+    return null;
+  }
+}
+
+function acceptCookies() {
+  setConsent("accepted");
+  document.getElementById("cookie-modal").style.display = "none";
+  //location.reload(); 
+}
+
+function declineCookies() {
+  setConsent("declined");
+  document.getElementById("cookie-modal").style.display = "none";
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const consent = getConsent();
+  if (!consent) {
+    document.getElementById("cookie-modal").style.display = "flex";
+  }
+});
+</script>
+
+
+
 
 </body>
 
